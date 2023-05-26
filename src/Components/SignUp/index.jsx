@@ -14,15 +14,21 @@ const SignUp = (props) => {
 		e.preventDefault();
 		const formData = new FormData(form.current);
 
-		setAccountInformation({
+		const userInfo = {
 			name: formData.get('name'),
 			email: formData.get('email'),
 			password: formData.get('password')
-		});
+		};
 
-		setSignOutStatus(false);
-		props.setSignUp(false);
-		window.location.pathname = '/';
+		const { name, email, password } = userInfo;
+
+		if(name && email && password) {
+			setAccountInformation(userInfo);
+			setSignOutStatus(false);
+			props.setSignUp(false);
+			window.location.pathname = '/';
+		}
+
 	}
   return (
     <form 

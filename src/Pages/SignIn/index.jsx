@@ -1,11 +1,12 @@
 import { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Router, useLocation } from "react-router-dom";
 import Layout from "../../Components/Layout";
 import { SignUp } from "../../Components/SignUp";
 import { ShoppingCartContext } from "../../Context";
 
 function SignIn() {
   const [signUp, setSignUp] = useState(false);
+  
 
 	const { 
 			signOutStatus,
@@ -20,7 +21,9 @@ function SignIn() {
 
 	const handleLogIn = () => {
     if(isAccountSaved()) {
-      setSignOutStatus(true);
+      setSignOutStatus(false);
+      window.location.pathname = '/'
+
     }
 	}
 
