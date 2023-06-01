@@ -9,10 +9,11 @@ import SignIn from '../SignIn'
 import Navbar from '../../Components/Navbar'
 import CheckoutSideMenu from '../../Components/CheckoutSideMenu'
 import './App.css'
+import { AuthorizationContainer } from '../../Components/AuthorizationContainer'
 
 const AppRoutes = () => {
   let routes = useRoutes([
-    { path: '/', element: <Home /> },
+    { path: '/', element: <Home />},
     { path: '/clothes', element: <Home /> },
     { path: '/electronics', element: <Home /> },
     { path: '/furnitures', element: <Home /> },
@@ -29,14 +30,15 @@ const AppRoutes = () => {
 
   return routes
 }
-
 const App = () => {
   return (
     <ShoppingCartProvider>
       <BrowserRouter>
-        <AppRoutes />
-        <Navbar />
-        <CheckoutSideMenu />
+        <AuthorizationContainer>
+          <AppRoutes />
+          <Navbar />
+          <CheckoutSideMenu />
+        </AuthorizationContainer>
       </BrowserRouter>
     </ShoppingCartProvider>
   )

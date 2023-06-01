@@ -1,5 +1,6 @@
 import React, { useContext, useRef } from "react";
 import { ShoppingCartContext } from "../../Context";
+import { useNavigate } from "react-router-dom";
 
 const SignUp = (props) => {
 
@@ -7,6 +8,8 @@ const SignUp = (props) => {
     setAccountInformation,
 		setSignOutStatus
 	} = useContext(ShoppingCartContext);
+
+	const navigate = useNavigate();
 
 	const form = useRef(null);
 
@@ -26,10 +29,10 @@ const SignUp = (props) => {
 			setAccountInformation(userInfo);
 			setSignOutStatus(false);
 			props.setSignUp(false);
-			window.location.pathname = '/';
+			navigate('/', {replace: true});
 		}
-
 	}
+
   return (
     <form 
 			ref={form}

@@ -1,12 +1,12 @@
 import { useContext, useState } from "react";
-import { Link, Router, useLocation } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Layout from "../../Components/Layout";
 import { SignUp } from "../../Components/SignUp";
 import { ShoppingCartContext } from "../../Context";
 
 function SignIn() {
   const [signUp, setSignUp] = useState(false);
-  
+  const navigate = useNavigate();
 
 	const { 
 			signOutStatus,
@@ -21,15 +21,15 @@ function SignIn() {
 
 	const handleLogIn = () => {
     if(isAccountSaved()) {
-      setSignOutStatus(false);
-      window.location.pathname = '/'
-
+      setSignOutStatus(false)
+      navigate('/', {replace: true})
     }
 	}
 
   const isAccountSaved = () => {
     return !!accountInformation.email;
   }
+
   return (
     <Layout>
       <div className="flex items-center justify-center relative w-80 mb-4">
